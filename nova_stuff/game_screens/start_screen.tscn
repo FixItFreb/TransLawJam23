@@ -1,0 +1,80 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfbpicrrm3o1n"]
+
+[ext_resource type="PackedScene" uid="uid://ddg3xgxwwq7wh" path="res://nova_stuff/backgrounds/background.tscn" id="1_8sps5"]
+[ext_resource type="Script" path="res://nova_stuff/game_screens/start_screen.gd" id="1_fx000"]
+[ext_resource type="PackedScene" uid="uid://dn70c4asddseq" path="res://nova_stuff/game_screens/options_screen.tscn" id="3_ykmnh"]
+
+[node name="StartScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fx000")
+
+[node name="Background" parent="." instance=ExtResource("1_8sps5")]
+
+[node name="StartScreen" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -375.5
+offset_top = -70.0
+offset_right = 375.5
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Label" type="Label" parent="StartScreen"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0.498039, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.588235)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 20
+theme_override_font_sizes/font_size = 100
+text = "Cat Lain Bakery"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="StartScreen"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="StartButton" type="Button" parent="StartScreen/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 30
+text = "Start"
+
+[node name="OptionsButton" type="Button" parent="StartScreen/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 30
+text = "Options"
+
+[node name="ExitButton" type="Button" parent="StartScreen/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 30
+text = "Exit"
+
+[node name="OptionsScreen" parent="." instance=ExtResource("3_ykmnh")]
+visible = false
+layout_mode = 1
+start_options = true
+
+[connection signal="pressed" from="StartScreen/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="StartScreen/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="StartScreen/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
