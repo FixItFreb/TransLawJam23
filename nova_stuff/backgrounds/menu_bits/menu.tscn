@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cqprd1riq2nh5"]
+[gd_scene load_steps=5 format=3 uid="uid://cqprd1riq2nh5"]
 
 [ext_resource type="PackedScene" uid="uid://de7xxu6lsbef0" path="res://nova_stuff/backgrounds/menu_bits/strawberries.tscn" id="1_kxcr4"]
 
@@ -15,6 +15,21 @@ glow_hdr_threshold = 0.07
 
 [sub_resource type="World3D" id="World3D_puj6j"]
 environment = SubResource("Environment_4r5cx")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4byn5"]
+bg_color = Color(0, 0, 0, 0.588235)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+expand_margin_left = 40.0
+expand_margin_top = 20.0
+expand_margin_right = 40.0
+expand_margin_bottom = 20.0
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -40,3 +55,56 @@ size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
 [node name="strawberries" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_kxcr4")]
+
+[node name="Panel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4byn5")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.572549)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 20
+theme_override_font_sizes/font_size = 40
+text = "Main Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="Recipe" type="Label" parent="Panel/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Recipe"
+
+[node name="Ingredients" type="Label" parent="Panel/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Ingredients
+"
+horizontal_alignment = 2
+
+[node name="ChocoCake" type="Label" parent="Panel/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Choccy Cake"
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Flour, milk, strawbs, maybe some sugar?"

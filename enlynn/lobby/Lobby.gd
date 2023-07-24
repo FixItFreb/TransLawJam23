@@ -15,10 +15,10 @@ const Player = preload("res://enlynn/player/Player.tscn")
 
 var player_info = {} # map of player ids
 
-func _player_connect(id):
+func _player_connect(_id):
 	pass
 	
-func _player_disconnected(id):
+func _player_disconnected(_id):
 	pass
 
 func _connected_ok():        # called only on client
@@ -32,7 +32,7 @@ func _connected_fail():      # failed to connect, abort
 	
 @rpc("any_peer", "reliable", "call_remote")
 func register_player(info):
-	var id = get_tree().get_rpc_sender_id()
+	var id = get_tree().get_multiplayer().get_unique_id()
 	player_info[id] = info
 	
 	# TODO(enlynn): call function to update lobby UI
@@ -43,7 +43,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 @rpc("any_peer", "reliable", "call_remote")
