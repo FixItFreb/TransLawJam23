@@ -8,6 +8,7 @@ public partial class PlayerCharacter : StaticBody3D
 	[Export] private Node3D playerNode;
 	[Export] private AnimationPlayer animPlayer;
 	[Export] public Color slimeCol = new Color("b57eff");
+	[Export] public MultiplayerSynchronizer multiplayerSynchronizer;
 	[Export] private MeshInstance3D mesh;
 
 	private Vector3 moveDirection = Vector3.Zero;

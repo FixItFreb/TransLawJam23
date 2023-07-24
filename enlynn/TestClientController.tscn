@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bjnrp0dbrhe7l"]
-
-[ext_resource type="Script" path="res://enlynn/TestClientController.gd" id="1_v3yv0"]
-
-[node name="TestClientController" type="Node2D"]
-script = ExtResource("1_v3yv0")

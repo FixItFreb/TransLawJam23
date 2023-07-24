@@ -11,7 +11,7 @@ const c_initial_message = {
 	message = "Hello! Welcome to Enlynn's scuffed gamejam server!" 
 };
 
-const Player = preload("res://enlynn/player/Player.tscn")
+#const Player = preload("res://enlynn/player/Player.tscn")
 
 var player_info = {} # map of player ids
 
@@ -52,7 +52,7 @@ func preconfigure_game():
 	# occur in a post-configure step
 	get_tree().set_pause(true) 
 	
-	var self_peer_id = get_tree().get_network_unique_id()
+	var _self_peer_id = get_tree().get_network_unique_id()
 	
 	#
 	# NOTE(enlynn): As a multiplayer game, each player gets a 
@@ -73,18 +73,18 @@ func preconfigure_game():
 	#
 	
 	# Load the host
-	var host = Player.instantiate()
-	host.set_name(str(self_peer_id))
-	host.set_multiplayer_authority(self_peer_id)
-	get_node("/root/world/players").add_child(host)
+	#var host = Player.instantiate()
+	#host.set_name(str(self_peer_id))
+	#host.set_multiplayer_authority(self_peer_id)
+	#get_node("/root/world/players").add_child(host)
 	
 	# The demo example then iterates over player_info from Lobby
 	# and does the same thing as the server player!
-	for player in player_info:
-		var player_node = Player.instantiate()
-		player_node.set_name(str(player))
-		player_node.set_multiplayer_authority(player)
-		get_node("/root/world/players").add_child(player_node)
+	#for player in player_info:
+	#	var player_node = Player.instantiate()
+	#	player_node.set_name(str(player))
+	#	player_node.set_multiplayer_authority(player)
+	#	get_node("/root/world/players").add_child(player_node)
 	#endfor()
 	
 	rpc_id(c_server_id, "done_preconfiguring")

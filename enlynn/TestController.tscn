@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://v35n4raol5eg"]
-
-[ext_resource type="Script" path="res://enlynn/TestController.gd" id="1_ifvbt"]
-
-[node name="TestController" type="Node3D"]
-script = ExtResource("1_ifvbt")

@@ -1,7 +1,65 @@
-[gd_scene load_steps=3 format=3 uid="uid://55w2gkaloggb"]
+[gd_scene load_steps=3 format=3 uid="uid://clacod46ovxji"]
 
-[ext_resource type="Script" path="res://enlynn/Button1.gd" id="1_masty"]
-[ext_resource type="Script" path="res://enlynn/Button2.gd" id="2_0py2e"]
+[sub_resource type="GDScript" id="GDScript_pupv2"]
+script/source = "extends Button
+
+const ServerController = preload(\"res://enlynn/TestController.tscn\")
+
+var server
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+
+func _on_pressed():
+	get_node(\"/root/TestButtons/Button2\").disabled = true
+	
+	print(\"Server button was pressed\")
+	var button1 = get_node(\"/root/TestButtons/Button\")
+	button1.disabled  = true
+	
+	server = ServerController.instantiate()
+	button1.add_child(server)
+#endfunc()
+"
+
+[sub_resource type="GDScript" id="GDScript_oim8k"]
+script/source = "extends Button
+
+const ClientController = preload(\"res://enlynn/TestClientController.tscn\")
+
+var client
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+
+func _on_pressed():
+	# Prevent from accidentally selecting the first button
+	get_node(\"/root/TestButtons/Button\").disabled  = true
+	
+	print(\"Client button was pressed\")
+	var button2 = get_node(\"/root/TestButtons/Button2\")
+	button2.disabled = true
+	
+	client = ClientController.instantiate()
+	button2.add_child(client)
+#endfunc()
+	
+	
+"
 
 [node name="TestButtons" type="Node2D"]
 
@@ -18,7 +76,7 @@ color = Color(0.298039, 0.298039, 0.298039, 1)
 offset_right = 161.0
 offset_bottom = 114.0
 text = "Server"
-script = ExtResource("1_masty")
+script = SubResource("GDScript_pupv2")
 
 [node name="Button2" type="Button" parent="."]
 offset_left = 169.0
@@ -26,7 +84,7 @@ offset_top = 2.0
 offset_right = 345.0
 offset_bottom = 115.0
 text = "Client"
-script = ExtResource("2_0py2e")
+script = SubResource("GDScript_oim8k")
 
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
 [connection signal="pressed" from="Button2" to="Button2" method="_on_pressed"]
