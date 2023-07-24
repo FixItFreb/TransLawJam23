@@ -24,9 +24,8 @@ func back_from_options() -> void:
 
 func _on_host_button_pressed() -> void:
 	#get_tree().change_scene_to_packed(game_screen)
-	SoundManager.play("res://yook_stuff/sfx/menu01.wav")
-	ServerManager.init_server()
-	get_tree().change_scene_to_packed(game_world)
+	if MultiplayerManager.start_server():
+		get_tree().change_scene_to_packed(game_world)
 
 func _on_options_button_pressed() -> void:
 	SoundManager.play("res://yook_stuff/sfx/menu01.wav")
@@ -50,7 +49,6 @@ func _on_join_back_button_pressed() -> void:
 
 func _on_connect_button_pressed() -> void:
 	SoundManager.play("res://yook_stuff/sfx/menu01.wav")
-	ServerManager.c_local_server_addr = address_input.text
-	ServerManager.c_local_server_port = int(port_input.value)
-	ServerManager.join_server()
-	#get_tree().change_scene_to_packed(game_world)
+	MultiplayerManager.start_client(address_input.text, port_input.value)
+	get_tree().change_scene_to_packed(game_world)
+	#
