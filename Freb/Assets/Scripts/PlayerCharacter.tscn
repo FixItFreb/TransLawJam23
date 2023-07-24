@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://de8k1vta6ynml"]
 
-[ext_resource type="Script" path="res://Freb/Assets/Scripts/PlayerCharacter.cs" id="1_o2pxe"]
+[ext_resource type="Script" path="res://Freb/Assets/Scripts/player_character.gd" id="1_vxssv"]
 [ext_resource type="Texture2D" uid="uid://dw0c6n4cgqo02" path="res://Freb/Assets/Models/SlimeBody_catface_baseColor.png" id="2_1me1g"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_uu5ke"]
@@ -530,11 +530,12 @@ properties/3/spawn = true
 properties/3/sync = true
 properties/3/watch = false
 
-[node name="PlayerCharacter" type="StaticBody3D" node_paths=PackedStringArray("playerNode", "animPlayer", "multiplayerSynchronizer", "mesh")]
-script = ExtResource("1_o2pxe")
+[node name="PlayerCharacter" type="StaticBody3D" node_paths=PackedStringArray("playerNode", "animPlayer", "multiplayerSynch", "mesh")]
+script = ExtResource("1_vxssv")
+moveSpeed = 3.0
 playerNode = NodePath("slime")
 animPlayer = NodePath("slime/AnimationPlayer")
-multiplayerSynchronizer = NodePath("MultiplayerSynchronizer")
+multiplayerSynch = NodePath("MultiplayerSynchronizer")
 mesh = NodePath("slime/Sketchfab_model/8f4b526ad5bb40e8a038ee6183f7246d_fbx/Object_2/RootNode/Object_4/Skeleton3D/Object_7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
