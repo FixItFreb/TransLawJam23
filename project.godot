@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 ServerManager="*res://nova_stuff/globals/ServerManager.tscn"
 SoundManager="*res://nova_stuff/globals/sound_manager.tscn"
+MultiplayerManager="*res://🍲/multiplayer_manager.gd"
 
 [dotnet]
 

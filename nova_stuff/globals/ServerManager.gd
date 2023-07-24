@@ -18,6 +18,7 @@ var multiplayer_api : MultiplayerAPI
 
 var joined_server : bool = false
 
+
 func init_server():
 	server_state = ServerController.instantiate()
 	lobby_state  = LobbyController.instantiate()

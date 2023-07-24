@@ -531,6 +531,7 @@ properties/3/sync = true
 properties/3/watch = false
 
 [node name="PlayerCharacter" type="StaticBody3D" node_paths=PackedStringArray("playerNode", "animPlayer", "multiplayerSynch", "mesh", "playerCam")]
+collision_layer = 0
 script = ExtResource("1_vxssv")
 moveSpeed = 3.0
 playerNode = NodePath("slime")

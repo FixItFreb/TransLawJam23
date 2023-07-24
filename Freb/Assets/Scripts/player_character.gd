@@ -21,9 +21,10 @@ func set_col(newCol : Color) -> void:
 	mesh.get_surface_override_material(0).set("albedo_color", slimeCol)
 
 func _ready():
+	set_process(is_multiplayer_authority())
+	set_physics_process(is_multiplayer_authority())
 	set_col(slimeCol)
-	if(ServerManager.get_multiplayer_authority() == ServerManager.multiplayer.get_unique_id()):
-		playerCam.current = true
+	playerCam.current = is_multiplayer_authority()
 		
 	
 func _process(delta):
