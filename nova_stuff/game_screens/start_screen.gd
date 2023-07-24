@@ -8,21 +8,11 @@ var game_screen = preload("res://nova_stuff/game_screens/game_screen.tscn")
 @onready var port_input: SpinBox = $JoinScreen/VBoxContainer/VBoxContainer/GridContainer/PortInput
 
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func back_from_options() -> void:
 	SoundManager.play("res://yook_stuff/sfx/menu02.wav")
 	start_screen.visible = true
 
-func _on_start_button_pressed() -> void:
+func _on_host_button_pressed() -> void:
 	#get_tree().change_scene_to_packed(game_screen)
 	SoundManager.play("res://yook_stuff/sfx/menu01.wav")
 	ServerManager.init_server()
@@ -54,5 +44,5 @@ func _on_join_back_button_pressed() -> void:
 func _on_connect_button_pressed() -> void:
 	SoundManager.play("res://yook_stuff/sfx/menu01.wav")
 	ServerManager.c_local_server_addr = address_input.text
-	ServerManager.c_local_server_port = port_input.value
+	ServerManager.c_local_server_port = int(port_input.value)
 	ServerManager.join_server()
