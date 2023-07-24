@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://de7xxu6lsbef0"]
+
+[ext_resource type="Script" path="res://nova_stuff/backgrounds/menu_bits/strawberries.gd" id="1_1k7ci"]
+[ext_resource type="PackedScene" uid="uid://o82n7cmsgyyd" path="res://nova_stuff/backgrounds/menu_bits/strawberry.tscn" id="2_bukpm"]
+
+[sub_resource type="Curve3D" id="Curve3D_fc6r6"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -24.0471, 16.391, -4.15114, 0, 0, 0, 0, 0, 0, -11.0931, 18.1125, -4.17376, 0, 0, 0, 0, 0, 0, -2.62434, 16.9801, -4.2823, 0, 0, 0, 0, 0, 0, 5.11688, 15.5233, 0.313761, 0, 0, 0, 0, 0, 0, 18.6636, 15.778, -1.78254, 0, 0, 0, 0, 0, 0, 12.6522, 17.9736, -1.17862, 0, 0, 0, 0, 0, 0, -3.70747, 18.5423, 1.22919, 0, 0, 0, 0, 0, 0, -22.0532, 16.3815, 4.32485, 0, 0, 0, 0, 0, 0, -21.7903, 17.7648, -4.68855),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 9
+
+[node name="strawberries" type="Node3D"]
+script = ExtResource("1_1k7ci")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+current = true
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
+curve = SubResource("Curve3D_fc6r6")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(0.00174625, -0.131735, -0.991266, 7.45057e-09, 0.991284, -0.131733, 0.999997, 0.000230035, 0.001731, -24.0471, 16.391, -4.15114)
+
+[node name="strawb" parent="Path3D/PathFollow3D" instance=ExtResource("2_bukpm")]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+light_energy = 2.0
+
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]

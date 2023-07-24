@@ -13,6 +13,12 @@ public partial class PlayerCharacter : StaticBody3D
     private Vector3 moveDirection = Vector3.Zero;
     private bool isMoving = false;
 
+    public PlayerCharacter(string _playerName, Color _slimeCol)
+    {
+        playerName = _playerName;
+        slimeCol = _slimeCol;
+    }
+
     public void SetCol(Color newCol)
     {
         slimeCol = newCol;
