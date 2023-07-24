@@ -22,7 +22,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
 curve = SubResource("Curve3D_fc6r6")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(0.00174566, -0.131737, -0.991266, -7.45057e-09, 0.991284, -0.131735, 0.999997, 0.000229976, 0.00173041, -24.0471, 16.391, -4.15114)
+transform = Transform3D(0.00174625, -0.131735, -0.991266, 7.45057e-09, 0.991284, -0.131733, 0.999997, 0.000230035, 0.001731, -24.0471, 16.391, -4.15114)
 
 [node name="strawb" parent="Path3D/PathFollow3D" instance=ExtResource("2_bukpm")]
 
