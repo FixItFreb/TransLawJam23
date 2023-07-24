@@ -1,15 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://ccvaobrfi75vr"]
+[gd_scene load_steps=2 format=3 uid="uid://ccvaobrfi75vr"]
 
 [ext_resource type="Script" path="res://Freb/Assets/FrebTest.gd" id="1_pn76e"]
-[ext_resource type="PackedScene" uid="uid://de8k1vta6ynml" path="res://Freb/Assets/Scripts/PlayerCharacter.tscn" id="1_voyaa"]
 
 [node name="FrebTest" type="Node3D"]
 script = ExtResource("1_pn76e")
-
-[node name="PlayerCharacter" parent="." instance=ExtResource("1_voyaa")]
-visible = false
-moveSpeed = 5.0
-slimeCol = Color(0, 0.694118, 0.827451, 1)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 5, 5)

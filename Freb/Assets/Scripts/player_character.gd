@@ -1,4 +1,5 @@
 extends StaticBody3D
+class_name PlayerCharacter
 
 @export var playerName : String
 @export var moveSpeed : float = 0.5
@@ -7,6 +8,9 @@ extends StaticBody3D
 @export var slimeCol : Color = "b57eff"
 @export var multiplayerSynch : MultiplayerSynchronizer
 @export var mesh : MeshInstance3D
+
+var carrying : Node3D
+var carryNode : Node3D
 
 var moveDirection : Vector3 = Vector3.ZERO
 var isMoving : bool = false

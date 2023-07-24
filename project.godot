@@ -17,8 +17,6 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GameManager="*res://GameManager.cs"
-config/features=PackedStringArray("4.1", "C#", "Forward Plus")
 ServerManager="*res://nova_stuff/globals/ServerManager.tscn"
 SoundManager="*res://nova_stuff/globals/sound_manager.tscn"
 
