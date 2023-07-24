@@ -19,34 +19,38 @@ func _process(_delta: float) -> void:
 	pass
 
 func back_from_options() -> void:
+	SoundManager.play("res://yook_stuff/sfx/menu02.wav")
 	start_screen.visible = true
 
-func _on_start_button_pressed() -> void:
+func _on_host_button_pressed() -> void:
+	#get_tree().change_scene_to_packed(game_screen)
+	SoundManager.play("res://yook_stuff/sfx/menu01.wav")
 	ServerManager.init_server()
 	get_tree().change_scene_to_packed(game_world)
 
 func _on_options_button_pressed() -> void:
+	SoundManager.play("res://yook_stuff/sfx/menu01.wav")
 	start_screen.visible = false
 	options_screen.visible = true
-
-
 
 func _on_exit_button_pressed() -> void:
 	get_tree().quit()
 
 
 func _on_join_button_pressed() -> void:
+	SoundManager.play("res://yook_stuff/sfx/menu01.wav")
 	start_screen.visible = false
 	join_screen.visible = true
 
-
 func _on_join_back_button_pressed() -> void:
+	SoundManager.play("res://yook_stuff/sfx/menu02.wav")
 	start_screen.visible = true
 	join_screen.visible = false
 
 
 func _on_connect_button_pressed() -> void:
+	SoundManager.play("res://yook_stuff/sfx/menu01.wav")
 	ServerManager.c_local_server_addr = address_input.text
-	ServerManager.c_local_server_port = port_input.value
+	ServerManager.c_local_server_port = int(port_input.value)
 	ServerManager.join_server()
 	#get_tree().change_scene_to_packed(game_world)

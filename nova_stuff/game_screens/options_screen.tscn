@@ -74,7 +74,9 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_vertical = 1
-value = 50.0
+max_value = 1.0
+step = 0.01
+value = 0.5
 
 [node name="SFXLabel" type="Label" parent="VBoxContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
@@ -85,11 +87,13 @@ text = "SFX Volume:"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="MusicSlider2" type="HSlider" parent="VBoxContainer/VBoxContainer/GridContainer"]
+[node name="SFXSlider" type="HSlider" parent="VBoxContainer/VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_vertical = 1
-value = 50.0
+max_value = 1.0
+step = 0.01
+value = 0.5
 
 [node name="BackButton" type="Button" parent="VBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
@@ -106,5 +110,8 @@ size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 30
 text = "Exit"
 
+[connection signal="value_changed" from="VBoxContainer/VBoxContainer/GridContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="drag_ended" from="VBoxContainer/VBoxContainer/GridContainer/SFXSlider" to="." method="_on_sfx_slider_drag_ended"]
+[connection signal="value_changed" from="VBoxContainer/VBoxContainer/GridContainer/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
