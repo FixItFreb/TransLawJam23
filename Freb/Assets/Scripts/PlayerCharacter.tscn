@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://de8k1vta6ynml"]
+[gd_scene load_steps=15 format=3 uid="uid://de8k1vta6ynml"]
 
 [ext_resource type="Script" path="res://Freb/Assets/Scripts/PlayerCharacter.cs" id="1_o2pxe"]
 [ext_resource type="Texture2D" uid="uid://dw0c6n4cgqo02" path="res://Freb/Assets/Models/SlimeBody_catface_baseColor.png" id="2_1me1g"]
@@ -512,10 +512,29 @@ _data = {
 "Slime_WALK": SubResource("Animation_kj0ed")
 }
 
-[node name="PlayerCharacter" type="StaticBody3D" node_paths=PackedStringArray("playerNode", "animPlayer", "mesh")]
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ma803"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/sync = true
+properties/0/watch = false
+properties/1/path = NodePath("slime:rotation")
+properties/1/spawn = true
+properties/1/sync = true
+properties/1/watch = false
+properties/2/path = NodePath("slime/Sketchfab_model/8f4b526ad5bb40e8a038ee6183f7246d_fbx/Object_2/RootNode/Object_4/Skeleton3D/Object_7:skeleton")
+properties/2/spawn = true
+properties/2/sync = true
+properties/2/watch = false
+properties/3/path = NodePath("slime/AnimationPlayer:current_animation")
+properties/3/spawn = true
+properties/3/sync = true
+properties/3/watch = false
+
+[node name="PlayerCharacter" type="StaticBody3D" node_paths=PackedStringArray("playerNode", "animPlayer", "multiplayerSynchronizer", "mesh")]
 script = ExtResource("1_o2pxe")
 playerNode = NodePath("slime")
 animPlayer = NodePath("slime/AnimationPlayer")
+multiplayerSynchronizer = NodePath("MultiplayerSynchronizer")
 mesh = NodePath("slime/Sketchfab_model/8f4b526ad5bb40e8a038ee6183f7246d_fbx/Object_2/RootNode/Object_4/Skeleton3D/Object_7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -596,3 +615,6 @@ transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 
 libraries = {
 "": SubResource("AnimationLibrary_ckrnu")
 }
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_ma803")
