@@ -8,14 +8,14 @@ extends Node3D
 # --- Loads the "world" and starts
 #
 
-const c_local_server_addr : String           = "127.0.0.1";
-const c_max_players       : int              = 5;
-const c_local_server_port : int              = 8888; #yolo
+const c_local_server_addr : String              = "127.0.0.1";
+const c_max_players       : int                 = 5;
+const c_local_server_port : int                 = 8888; #yolo
 
 var server                : ENetMultiplayerPeer = ENetMultiplayerPeer.new();
 var multiplayer_api       : MultiplayerAPI
 
-var connected_clients     : PackedInt32Array = []
+var connected_clients                           = []
 
 var player_info = {} # map of player ids
 
@@ -53,6 +53,7 @@ func _process(_delta):
 
 func _on_peer_connected(peer_id):
 	print("Player connected with id: ", peer_id)
+	connected_clients.append(peer_id)
 	on_player_connect.emit(peer_id)
 
 func _on_peer_disconnected(peer_id):

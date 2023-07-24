@@ -9,7 +9,6 @@ var lobby_state;
 enum GameState { IN_LOBBY, PLAYING }
 var game_state: GameState = GameState.IN_LOBBY
 
-
 @export var c_local_server_addr : String = "127.0.0.1";
 @export var c_max_players       : int = 5;
 @export var c_local_server_port : int = 8888; #yolo
@@ -18,7 +17,6 @@ var client : ENetMultiplayerPeer = ENetMultiplayerPeer.new();
 var multiplayer_api : MultiplayerAPI
 
 var joined_server : bool = false
-
 
 func init_server():
 	server_state = ServerController.instantiate()
