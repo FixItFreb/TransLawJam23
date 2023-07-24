@@ -1,10 +1,17 @@
 extends Node
 
+#
+# A lobby represents pregrame state where we are waiting for all
+# the players to join the game.
+#
+
 const c_server_id: int = 1 # server id is always 1
 
 const c_initial_message = { 
 	message = "Hello! Welcome to Enlynn's scuffed gamejam server!" 
 };
+
+const Player = preload("res://enlynn/player/Player.tscn")
 
 var player_info = {} # map of player ids
 
@@ -66,7 +73,7 @@ func preconfigure_game():
 	#
 	
 	# Load the host
-	var host = preload("res://enlynn/player/player.gd").instantiate()
+	var host = Player.instantiate()
 	host.set_name(str(self_peer_id))
 	host.set_multiplayer_authority(self_peer_id)
 	get_node("/root/world/players").add_child(host)
@@ -74,7 +81,7 @@ func preconfigure_game():
 	# The demo example then iterates over player_info from Lobby
 	# and does the same thing as the server player!
 	for player in player_info:
-		var player_node = preload("res://enlynn/player/player.gd").instantiate()
+		var player_node = Player.instantiate()
 		player_node.set_name(str(player))
 		player_node.set_multiplayer_authority(player)
 		get_node("/root/world/players").add_child(player_node)
@@ -106,3 +113,4 @@ func postconfigure_game():
 	if get_tree().get_rpc_sender_id() == c_server_id:
 		get_tree().set_pause(false)
 	#endif()
+#endfunc()
