@@ -8,6 +8,7 @@ class_name PlayerCharacter
 @export var slimeCol : Color = "b57eff"
 @export var multiplayerSynch : MultiplayerSynchronizer
 @export var mesh : MeshInstance3D
+@export var playerCam : Camera3D
 
 var carrying : Node3D
 var carryNode : Node3D
@@ -21,6 +22,9 @@ func set_col(newCol : Color) -> void:
 
 func _ready():
 	set_col(slimeCol)
+	if(ServerManager.get_multiplayer_authority() == ServerManager.multiplayer.get_unique_id()):
+		playerCam.current = true
+		
 	
 func _process(delta):
 	if(isMoving):

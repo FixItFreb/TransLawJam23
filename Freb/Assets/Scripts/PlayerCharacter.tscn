@@ -530,13 +530,14 @@ properties/3/spawn = true
 properties/3/sync = true
 properties/3/watch = false
 
-[node name="PlayerCharacter" type="StaticBody3D" node_paths=PackedStringArray("playerNode", "animPlayer", "multiplayerSynch", "mesh")]
+[node name="PlayerCharacter" type="StaticBody3D" node_paths=PackedStringArray("playerNode", "animPlayer", "multiplayerSynch", "mesh", "playerCam")]
 script = ExtResource("1_vxssv")
 moveSpeed = 3.0
 playerNode = NodePath("slime")
 animPlayer = NodePath("slime/AnimationPlayer")
 multiplayerSynch = NodePath("MultiplayerSynchronizer")
 mesh = NodePath("slime/Sketchfab_model/8f4b526ad5bb40e8a038ee6183f7246d_fbx/Object_2/RootNode/Object_4/Skeleton3D/Object_7")
+playerCam = NodePath("Camera3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -622,3 +623,6 @@ replication_config = SubResource("SceneReplicationConfig_ma803")
 
 [node name="CarryNode" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 4, 4)

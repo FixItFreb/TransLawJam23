@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ccvaobrfi75vr"]
+[gd_scene load_steps=3 format=3 uid="uid://ccvaobrfi75vr"]
 
 [ext_resource type="Script" path="res://Freb/Assets/FrebTest.gd" id="1_pn76e"]
+[ext_resource type="PackedScene" uid="uid://g53xusxb8lc2" path="res://Freb/Assets/bakery.tscn" id="2_30sqn"]
 
 [node name="FrebTest" type="Node3D"]
 script = ExtResource("1_pn76e")
@@ -10,3 +11,5 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.760587, 0.649236, 0, -0.649236, 0.760587, 0, 2.17743, 0)
+
+[node name="Bakery" parent="." instance=ExtResource("2_30sqn")]
