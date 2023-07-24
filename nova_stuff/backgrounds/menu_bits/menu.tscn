@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqprd1riq2nh5"]
+
+[ext_resource type="PackedScene" uid="uid://de7xxu6lsbef0" path="res://nova_stuff/backgrounds/menu_bits/strawberries.tscn" id="1_kxcr4"]
+
+[sub_resource type="Environment" id="Environment_4r5cx"]
+background_mode = 1
+background_color = Color(0.490196, 0.141176, 0.360784, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.968627, 1, 0, 1)
+tonemap_mode = 3
+glow_enabled = true
+glow_normalized = true
+glow_blend_mode = 1
+glow_hdr_threshold = 0.07
+
+[sub_resource type="World3D" id="World3D_puj6j"]
+environment = SubResource("Environment_4r5cx")
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+world_3d = SubResource("World3D_puj6j")
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="strawberries" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_kxcr4")]
